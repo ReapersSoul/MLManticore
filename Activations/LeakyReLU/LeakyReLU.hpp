@@ -4,15 +4,15 @@
 class LeakyReLU : public ActivationFunction
 {
 public:
-	double alpha;
+	float alpha;
 	LeakyReLU();
-	LeakyReLU(double Alpha);
-	Scalar<double> Activate(Scalar<double> input) override;
-	Scalar<double> Derivative(Scalar<double> input) override;
-	Vector<double> Activate(Vector<double> input) override;
-	Vector<double> Derivative(Vector<double> input) override;
-	Matrix<double> Activate(Matrix<double> input) override;
-	Matrix<double> Derivative(Matrix<double> input) override;
-	Tensor3<double> Activate(Tensor3<double> input) override;
-	Tensor3<double> Derivative(Tensor3<double> input) override;
+	LeakyReLU(float Alpha);
+	float Activate(float input) override;
+	float Derivative(float input) override;
+	std::vector<float> Activate(std::vector<float> input) override;
+	std::vector<float> Derivative(std::vector<float> input) override;
+	std::vector<std::vector<float>> Activate(std::vector<std::vector<float>> input) override;
+	std::vector<std::vector<float>> Derivative(std::vector<std::vector<float>> input) override;
+	std::vector<std::vector<std::vector<float>>> Activate(std::vector<std::vector<std::vector<float>>> input) override;
+	std::vector<std::vector<std::vector<float>>> Derivative(std::vector<std::vector<std::vector<float>>> input) override;
 };

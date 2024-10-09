@@ -1,30 +1,30 @@
 #include "SoftMax.hpp"
 
-double SoftMax::Activate(double x){
+float SoftMax::Activate(float x){
 	return exp(x);
 }
 
-double SoftMax::Derivative(double x){
+float SoftMax::Derivative(float x){
 	return x*(1-x);
 }
 
-std::vector<double> SoftMax::Activate(std::vector<double> x){
-	std::vector<double> result(x.size());
-	GPU_SoftMax(x, result);
+std::vector<float> SoftMax::Activate(std::vector<float> x){
+	std::vector<float> result(x.size());
+	Common::SoftMax(x, result);
 	return result;
 }
 
-std::vector<double> SoftMax::Derivative(std::vector<double> x){
-	std::vector<double> result(x.size());
-	GPU_SoftMax_Derivative(x, result);
+std::vector<float> SoftMax::Derivative(std::vector<float> x){
+	std::vector<float> result(x.size());
+	Common::SoftMax_Derivative(x, result);
 	return result;
 }
 
-void SoftMax::Backward(double input, double fg, double lr){
+void SoftMax::Backward(float input, float fg, float lr){
 	throw "Not implemented";
 }
 
-void SoftMax::Backward(std::vector<double> input, std::vector<double> fg, double lr){
+void SoftMax::Backward(std::vector<float> input, std::vector<float> fg, float lr){
 	throw "Not implemented";
 }
 

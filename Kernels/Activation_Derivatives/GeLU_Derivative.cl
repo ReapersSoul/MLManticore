@@ -1,4 +1,3 @@
-
 __kernel void GeLU_Derivative(__global const double* tensor, __global double* result, int size)
 {
 	int i = get_global_id(0);

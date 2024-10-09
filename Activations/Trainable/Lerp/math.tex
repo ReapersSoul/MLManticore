@@ -1,0 +1,65 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\begin{document}	
+
+	\[
+	P=[p_1, p_2, \ldots, p_n]
+	\]
+    \[
+    T(x)=tanh(x)
+    \]
+	\[
+	L(x,m,h)= m + \frac{x + 1}{2} \cdot (h - m)
+	\]
+	\[
+	S(n)=\frac{1}{n}
+	\]
+	\[
+	I(x,n)=\frac{T(x)}{S(n)}
+	\]
+	\[
+	R(x,n)=\frac{(T(x)-I(x,n)*S(n))}{S(n)}
+	\]
+	\[
+	A(x,P)=L(R(x,n),P[I(x,n)],P[I(x,n)+1])
+	\]
+
+	Derivatives:
+	\[
+	\frac{\partial T(x)}{\partial x}=(1-tanh(x)^2)
+	\]
+	\[
+	\frac{\partial L(x,m,h)}{\partial x}= \frac{h-m}{2}
+	\]
+	\[
+	\frac{\partial L(x,m,h)}{\partial m}=-\frac{x-1}{2}
+	\]
+	\[
+	\frac{\partial L(x,m,h)}{\partial h}= \frac{x+1}{2}
+	\]
+	\[
+	\frac{\partial S(n)}{\partial n}=-\frac{1}{n^2}
+	\]
+	\[
+	\frac{\partial I(x,n)}{\partial x}=\frac{\frac{\partial T(x)}{\partial x}}{S(n)}
+	\]
+	\[
+	\frac{\partial I(x,n)}{\partial n}=-\frac{T(x)}{n^2}
+	\]
+	\[
+	\frac{\partial R(x,n)}{\partial x}=\frac{\frac{\partial T(x)}{\partial x}}{S(n)}-\frac{\frac{\partial I(x,n)}{\partial x}S(n)+I(x,n)\frac{\partial S(n)}{\partial n}}{S(n)^2}
+	\]
+	\[
+	\frac{\partial R(x,n)}{\partial n}=-\frac{T(x)}{n^2}-\frac{\frac{\partial I(x,n)}{\partial n}S(n)+I(x,n)\frac{\partial S(n)}{\partial n}}{S(n)^2}
+	\]
+	apply chain rule:
+	\[
+	\frac{\partial A(x,P)}{\partial x}=\frac{\partial L(R(x,n),P[I(x,n)],P[I(x,n)+1])}{\partial x} \cdot \frac{\partial R(x,n)}{\partial x}
+	\]
+	\[
+	\frac{\partial A(x,P)}{\partial P[I(x,n)]}=\frac{\partial L(R(x,n),P[I(x,n)],P[I(x,n)+1])}{\partial m} \cdot \frac{\partial R(x,n)}{\partial x}
+	\]
+	\[
+	+\frac{\partial L(R(x,n),P[I(x,n)],P[I(x,n)+1])}{\partial h} \cdot \frac{\partial R(x,n)}{\partial x}
+	\]
+\end{document}

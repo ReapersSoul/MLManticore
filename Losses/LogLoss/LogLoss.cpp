@@ -1,21 +1,21 @@
 #include "LogLoss.hpp"
 
-double LogLoss::Calculate(double output, double target){
+float LogLoss::Calculate(float output, float target){
 	return -target*log(output) - (1-target)*log(1-output);
 }
 
-double LogLoss::Derivative(double output, double target){
+float LogLoss::Derivative(float output, float target){
 	return (output-target)/(output*(1-output));
 }
 
-double LogLoss::Calculate(std::vector<double> output, std::vector<double> target){
-	double result;
-	GPU_LogLoss(output, target, result);
+float LogLoss::Calculate(std::vector<float> output, std::vector<float> target){
+	float result;
+	Common::LogLoss(output, target, result);
 	return result;
 }
 
-std::vector<double> LogLoss::Derivative(std::vector<double> output, std::vector<double> target){
-	std::vector<double> result;
-	GPU_LogLoss_Derivative(output, target, result);
+std::vector<float> LogLoss::Derivative(std::vector<float> output, std::vector<float> target){
+	std::vector<float> result;
+	Common::LogLoss_Derivative(output, target, result);
 	return result;
 }

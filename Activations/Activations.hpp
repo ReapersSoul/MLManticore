@@ -7,3 +7,4 @@
 //#include "Softmax/Softmax.hpp"
 #include "Tanh/Tanh.hpp"
 #include "Trainable/Bezier/Bezier.hpp"
+#include "Trainable/Lerp/LerpEndToEnd.hpp"

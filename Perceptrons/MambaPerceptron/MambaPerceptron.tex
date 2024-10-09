@@ -1,0 +1,87 @@
+% !TeX root = MambaPerceptron.tex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Mamba Perceptron}
+\author{Trevor Davis Ducharme}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document provides a mathematical overview of the Mamba perceptron model.
+
+\section{Perceptron Model}
+A perceptron is a classifier that generates its weights based on the previous generated weights.
+ The output of the perceptron is given by:
+\[
+	Z(X,W,B)=\left[\left(\sum_{i=1}^{n} W_{j,i} \cdot X_i\right) + B_j, \ldots, \left(\sum_{i=1}^{n} W_{m,i} \cdot X_i\right) + B_m\right]
+\]
+
+\[
+	gx = [x_1, x_2, \ldots, x_n, pw_{1,1}, pw_{1,2}, \ldots, pw_m,n]
+\]
+\[
+	w=S(Z(gx, gw, gb))
+\]
+
+\[
+	z = \left(\sum_{i=1}^{n} w_i \cdot x_i\right) + b
+\]
+\[
+	y = A(z)
+\]
+where:
+\begin{itemize}
+	\item $\mathbf{A}$ is the activation function
+	\item $\mathbf{S}$ is the softmax function
+	\item $\mathbf{gw}$ is the generator weight vector
+	\item $\mathbf{pw}$ is the previous weight vector
+	\item $\mathbf{x}$ is the input vector
+	\item $\mathbf{gx}$ is the input vector with the previous generated weights appended
+	\item $\mathbf{b}$ is the bias term
+	\item $\mathbf{gb}$ is the bias terms for the generator layer
+\end{itemize}
+
+\section{Training the Perceptron}
+The perceptron is trained using the following equations:
+\subsection{Necessary Derivatives}
+\[
+	\frac{\partial y}{\partial z} = A'(z)
+\]
+\[
+	\frac{\partial z}{\partial w_i} = \mathbf{x_i}
+\]
+\[
+	\frac{\partial w_i}{\partial gw_i} = TODO
+\]
+\[
+	\frac{\partial z}{\partial b} = 1
+\]
+\subsection{Updating the Weights}
+The weights are updated as follows:
+\[
+\mathbf{w} \leftarrow \mathbf{w} + \Delta \mathbf{w}
+\]
+where:
+\[
+	\Delta \mathbf{w_i} = -\eta \cdot L'(y, \hat{y}) \cdot \frac{\partial y}{\partial z} \cdot \frac{\partial z}{\partial \mathbf{w_i}}
+\]
+
+Here, $\eta$ is the learning rate, $L$ is the loss function, and $\hat{y}$ is the target output.
+
+\subsection{Updating the Bias}
+The bias term is updated as follows:
+\[
+\mathbf{b} \leftarrow \mathbf{b} + \Delta \mathbf{b}
+\]
+where:
+\[
+	\Delta \mathbf{b} = -\eta \cdot L'(y, \hat{y}) \cdot \frac{\partial y}{\partial z} \cdot \frac{\partial z}{\partial b}
+\]
+
+\end{document}

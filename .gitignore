@@ -1,4 +1,9 @@
-build/*
-Include/*
-lib/*
-.vscode/*
+.vscode/
+build/
+lib/
+Include/
+*.aux
+*.fls
+*.fdb_latexmk
+*.log
+*.synctex.gz

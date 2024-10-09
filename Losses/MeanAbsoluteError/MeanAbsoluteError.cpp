@@ -1,24 +1,24 @@
 #include "MeanAbsoluteError.hpp"
 
-double MeanAbsoluteError::Calculate(double output, double target){
+float MeanAbsoluteError::Calculate(float output, float target){
 	return abs(output-target);
 }
 
-double MeanAbsoluteError::Derivative(double output, double target){
+float MeanAbsoluteError::Derivative(float output, float target){
 	return output-target > 0 ? 1 : -1;
 }
 
-double MeanAbsoluteError::Calculate(std::vector<double> output, std::vector<double> target){
-	double result;
-	std::vector<double> temp;
-	GPU_Sub(output, target, temp);
-	GPU_Abs(temp, temp);
-	GPU_Sum_Fast(temp, result);
+float MeanAbsoluteError::Calculate(std::vector<float> output, std::vector<float> target){
+	float result;
+	std::vector<float> temp;
+	Common::Sub(output, target, temp);
+	Common::Abs(temp, temp);
+	Common::Sum(temp, result);
 	return result/output.size();
 }
 
-std::vector<double> MeanAbsoluteError::Derivative(std::vector<double> output, std::vector<double> target){
-	std::vector<double> result;
-	GPU_MeanAbsoluteError_Derivative(output, target, result);
+std::vector<float> MeanAbsoluteError::Derivative(std::vector<float> output, std::vector<float> target){
+	std::vector<float> result;
+	Common::MeanAbsoluteError_Derivative(output, target, result);
 	return result;
 }

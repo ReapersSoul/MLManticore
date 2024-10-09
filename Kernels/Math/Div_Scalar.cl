@@ -1,4 +1,4 @@
-__kernel void Div(__global const double* input1,
+__kernel void Div_Scalar(__global const double* input1,
 							  const double input2,
 							  __global double* output,
 							  const int size)

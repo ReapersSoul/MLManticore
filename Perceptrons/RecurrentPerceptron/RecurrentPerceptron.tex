@@ -1,0 +1,73 @@
+% !TeX root = RecurrentPerceptron.tex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Recurrent Perceptron}
+\author{Trevor Davis Ducharme}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document provides a mathematical overview of the basic perceptron model.
+
+\section{Perceptron Model}
+A recurrent perceptron is a simple classifier that takes into account the previous classifications. The output of the perceptron is given by:
+\[
+	r = [x_1, x_2, \ldots, x_n, p]
+\]
+\[
+	z = \left(\sum_{i=1}^{n+1} w_i \cdot r_i\right) + b
+\]
+\[
+	y = A(z)
+\]
+where:
+\begin{itemize}
+	\item $A$ is the activation function
+	\item $\mathbf{w}$ is the weight vector
+	\item $\mathbf{x}$ is the input vector
+	\item $b$ is the bias term
+	\item $r$ is the input vector with the previous activation appended
+	\item $p$ is the previous activation
+\end{itemize}
+
+\section{Training the Perceptron}
+The perceptron is trained using the following equations:
+\subsection{Necessary Derivatives}
+\[
+	\frac{\partial y}{\partial z} = A'(z)
+\]
+\[
+	\frac{\partial z}{\partial \mathbf{w_i}} = \mathbf{r_i}
+\]
+\[
+	\frac{\partial z}{\partial b} = 1
+\]
+\subsection{Updating the Weights}
+The weights are updated as follows:
+\[
+\mathbf{w} \leftarrow \mathbf{w} + \Delta \mathbf{w}
+\]
+where:
+\[
+	\Delta \mathbf{w_i} = -\eta \cdot L'(y, \hat{y}) \cdot \frac{\partial y}{\partial z} \cdot \frac{\partial z}{\partial \mathbf{w_i}}
+\]
+
+Here, $\eta$ is the learning rate, $L$ is the loss function, and $\hat{y}$ is the target output.
+
+\subsection{Updating the Bias}
+The bias term is updated as follows:
+\[
+\mathbf{b} \leftarrow \mathbf{b} + \Delta \mathbf{b}
+\]
+where:
+\[
+	\Delta \mathbf{b} = -\eta \cdot L'(y, \hat{y}) \cdot \frac{\partial y}{\partial z} \cdot \frac{\partial z}{\partial b}
+\]
+
+\end{document}

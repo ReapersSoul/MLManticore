@@ -4,8 +4,8 @@
 class LogLoss : public LossFunction
 {
 public:
-	double Calculate(double output, double target);
-	double Derivative(double output, double target);
-	double Calculate(std::vector<double> output, std::vector<double> target);
-	std::vector<double> Derivative(std::vector<double> output, std::vector<double> target);
+	float Calculate(float output, float target);
+	float Derivative(float output, float target);
+	float Calculate(std::vector<float> output, std::vector<float> target);
+	std::vector<float> Derivative(std::vector<float> output, std::vector<float> target);
 };
