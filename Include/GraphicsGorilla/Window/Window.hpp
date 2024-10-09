@@ -140,9 +140,6 @@ namespace GraphicsGorilla
           int width, height;
           glfwGetFramebufferSize(window, &width, &height);
           Draw(width, height);
-          int width, height;
-          glfwGetFramebufferSize(window, &width, &height);
-          Draw(width, height);
         }
         glfwSwapBuffers(window);
         glfwPollEvents();

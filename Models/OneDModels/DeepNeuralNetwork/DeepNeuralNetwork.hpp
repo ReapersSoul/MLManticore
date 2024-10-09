@@ -4,12 +4,12 @@
 #include <thread>
 
 #include <Common.hpp>
-#include <Models/PerceptronLayer/PerceptronLayer.hpp>
+#include <Layers/OneDLayers/BasicLayer/BasicLayer.hpp>
 
 class DeepNeuralNetwork
 {
 private:
-	std::vector<PerceptronLayer> layers;
+	std::vector<BasicLayer> layers;
 
 public:
 	DeepNeuralNetwork();

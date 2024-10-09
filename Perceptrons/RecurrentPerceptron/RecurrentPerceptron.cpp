@@ -1,11 +1,5 @@
 #include "RecurrentPerceptron.hpp"
 
-RecurrentPerceptron::RecurrentPerceptron() {
-}
-
-RecurrentPerceptron::~RecurrentPerceptron() {
-}
-
 void RecurrentPerceptron::Init(int InSize, ActivationFunction *af, float min, float max, float min_clamp, float max_clamp)
 {
 	this->InSize = InSize;

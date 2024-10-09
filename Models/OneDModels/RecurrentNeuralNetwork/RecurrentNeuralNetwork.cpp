@@ -1,5 +1,4 @@
 #include "RecurrentNeuralNetwork.hpp"
-#include "../../Activations/ActivationFunction.hpp"
 
 RecurrentNeuralNetwork::RecurrentNeuralNetwork()
 {
